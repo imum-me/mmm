@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"m-mm.me","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.13.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Notion设置中文Notion目前没有中文界面，于是，便有动手能力强的大佬决定自己解决这个问题。目前有两种汉化方案：网页版汉化、客户端汉化。网页版汉化：利用Chrome或Edge等浏览器使用油猴插件，安装脚本实现，插件：NotionEnhancer客户端汉化：支持Windows、Mac以及安卓，详情见Github：Notion-zh_CN据说中文界面目前正在测试，估计中文界面已经快要到来了。Ma">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Notion设置中文">
+<meta property="og:url" content="http://m-mm.me/2022/03/23/Notion%E6%94%B9%E4%B8%AD%E6%96%87/index.html">
+<meta property="og:site_name" content="折腾派">
+<meta property="og:description" content="Notion设置中文Notion目前没有中文界面，于是，便有动手能力强的大佬决定自己解决这个问题。目前有两种汉化方案：网页版汉化、客户端汉化。网页版汉化：利用Chrome或Edge等浏览器使用油猴插件，安装脚本实现，插件：NotionEnhancer客户端汉化：支持Windows、Mac以及安卓，详情见Github：Notion-zh_CN据说中文界面目前正在测试，估计中文界面已经快要到来了。Ma">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/tosspi/img@main//img/notion1.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/tosspi/img@main//img/notion2.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/tosspi/img@main//img/notion3.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/tosspi/img@main//img/notion4.png">
+<meta property="article:published_time" content="2022-03-23T07:26:19.000Z">
+<meta property="article:modified_time" content="2022-03-23T08:05:46.408Z">
+<meta property="article:author" content="Zhao">
+<meta property="article:tag" content="Notion">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/tosspi/img@main//img/notion1.png">
+
+
+<link rel="canonical" href="http://m-mm.me/2022/03/23/Notion%E6%94%B9%E4%B8%AD%E6%96%87/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://m-mm.me/2022/03/23/Notion%E6%94%B9%E4%B8%AD%E6%96%87/","path":"2022/03/23/Notion改中文/","title":"Notion设置中文"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Notion设置中文 | 折腾派</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">折腾派</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">生命不惜,折腾不止</p>
+      <img class="custom-logo-image" src="https://cdn.jsdelivr.net/gh/imum-me/img@main/uPic/xiaokonglongtouxiang.png" alt="折腾派">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-胡言乱语"><a href="/bb/" rel="section"><i class="fa fa-comments fa-fw"></i>胡言乱语</a></li><li class="menu-item menu-item-schedule"><a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a></li><li class="menu-item menu-item-travelling"><a href="https://travellings.link/" rel="noopener" target="_blank"><i class="fa fa-subway fa-fw"></i>Travelling</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container"></div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container">
+  <div class="algolia-stats"><hr></div>
+  <div class="algolia-hits"></div>
+  <div class="algolia-pagination"></div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Notion%E8%AE%BE%E7%BD%AE%E4%B8%AD%E6%96%87"><span class="nav-number">1.</span> <span class="nav-text">Notion设置中文</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E5%90%8E"><span class="nav-number">1.1.</span> <span class="nav-text">最后</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Zhao"
+      src="https://cdn.jsdelivr.net/gh/tosspi/img@main/img/zhaoico2.png">
+  <p class="site-author-name" itemprop="name">Zhao</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="mailto:i@imum.me" title="E-Mail → mailto:i@imum.me" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/zhaomumu520" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;zhaomumu520" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/imum_me" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;imum_me" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://imum.me/" title="你是人间的四月天 → https:&#x2F;&#x2F;imum.me" rel="noopener" target="_blank"><i class="fa fa-globe fa-fw"></i>你是人间的四月天</a>
+      </span>
+  </div>
+
+
+<div class="cc-license animated" itemprop="sponsor">
+  <a href="https://travellings.link" class="cc-opacity" title="开往-友链接力" target="_blank"><img width="80" src="https://travellings.link/assets/logo.svg" alt="Travelling"></a>
+</div><div class="cc-license animated" itemprop="sponsor">
+  <a href="https://www.foreverblog.cn/go.html" class="cc-opacity" title="穿梭虫洞-随机访问十年之约友链博客" target="_blank"><img width="80" src="https://img.foreverblog.cn/wormhole_2.gif" alt="Foreverblog"></a>
+</div>  
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://m-mm.me/2022/03/23/Notion%E6%94%B9%E4%B8%AD%E6%96%87/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/tosspi/img@main/img/zhaoico2.png">
+      <meta itemprop="name" content="Zhao">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="折腾派">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Notion设置中文 | 折腾派">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Notion设置中文
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-03-23 15:26:19 / 修改时间：16:05:46" itemprop="dateCreated datePublished" datetime="2022-03-23T15:26:19+08:00">2022-03-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Notion/" itemprop="url" rel="index"><span itemprop="name">Notion</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="Notion设置中文"><a href="#Notion设置中文" class="headerlink" title="Notion设置中文"></a>Notion设置中文</h1><p>Notion目前没有中文界面，于是，便有动手能力强的大佬决定自己解决这个问题。目前有两种汉化方案：网页版汉化、客户端汉化。<br>网页版汉化：利用Chrome或Edge等浏览器使用油猴插件，安装脚本实现，插件：<a target="_blank" rel="noopener" href="https://greasyfork.org/zh-CN/scripts/409695-notionenhancer">NotionEnhancer</a><br>客户端汉化：支持Windows、Mac以及安卓，详情见Github：<a target="_blank" rel="noopener" href="https://github.com/Reamd7/notion-zh_CN">Notion-zh_CN</a><br>据说中文界面目前正在测试，估计中文界面已经快要到来了。<br>Mac端：<br>1、打开Finder,应用程序，右键Notion，显示应用包内容，打开Notion.app\Contents\Resources\app\renderer<br><img src="https://cdn.jsdelivr.net/gh/tosspi/img@main//img/notion1.png"><br>2、将下载的notion-zh_CN.js移动到此目录。<br>3、编辑preload.js，在最后一行加上如下代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">require(&quot;./notion-zh_CN&quot;)</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/tosspi/img@main//img/notion2.png"><br><img src="https://cdn.jsdelivr.net/gh/tosspi/img@main//img/notion3.png"><br>4、最后重启 Notion，享受中文界面吧。<br><img src="https://cdn.jsdelivr.net/gh/tosspi/img@main//img/notion4.png"></p>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>目前没有其他PC先写个Mac的吧，其他客户端可以到<a target="_blank" rel="noopener" href="https://github.com/Reamd7/notion-zh_CN">GitHub</a>看一下，教程很详细.<br>刚开始摸索Notion，以后再有其他的会继续编辑.</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Notion/" rel="tag"><i class="fa fa-tag"></i> Notion</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/03/05/%E8%A7%A3%E5%86%B3Windows10%E6%89%93%E5%BC%80MicrosoftStore%E5%87%BA%E9%94%99%E9%97%AE%E9%A2%98-md/" rel="prev" title="解决Windows10打开Microsoft Store出错问题">
+                  <i class="fa fa-chevron-left"></i> 解决Windows10打开Microsoft Store出错问题
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/09/12/%E5%BC%80%E6%BA%90Rime%E8%BE%93%E5%85%A5%E6%B3%95-%E9%BC%A0%E9%A1%BB%E7%AE%A1-%E7%9A%84%E5%82%BB%E7%93%9C%E5%BC%8F%E9%85%8D%E7%BD%AE%E4%B9%8B%E8%B7%AF/" rel="next" title="开源Rime输入法[鼠须管]的傻瓜式配置之路">
+                  开源Rime输入法[鼠须管]的傻瓜式配置之路 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2021 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder"><img alt="vercel" src="https://img.shields.io/badge/Powered-Vercel&Hexo-yellowgreen?link=https://vercel.com&link=https://vercel.com&logo=vercel"> <img alt="Website" src="https://img.shields.io/website?label=Toss Pi&logo=Grav&style=flat-square&url=https%3A%2F%2Fm-mm.me?link=https://imum.me&link=https://imum.me"><img alt="Website" src="https://img.shields.io/website?down_message=Off&label=GitHub&logo=GitHub&up_color=orange&up_message=Push&url=https%3A%2F%2Fgithub.com"><img alt="jsDelivr hits (GitHub)" src="https://img.shields.io/jsdelivr/gh/hm/tosspi/img?color=critical&label=Jsdelivr&logo=jsdelivr"><img alt="Website" src="https://img.shields.io/website?down_message=Off&label=Cloudflare&logo=Cloudflare&up_message=CDN&url=https%3A%2F%2Fimum.me"></span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.14.2/dist/algoliasearch-lite.umd.js" integrity="sha256-dImjLPUsG/6p3+i7gVKBiDM8EemJAhQ0VvkRK2pVsQY=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.45.0/dist/instantsearch.production.min.js" integrity="sha256-356MuKn0s/KnBeNjzWGP1048qENU5M4IiAWc7q9GErU=" crossorigin="anonymous"></script><script src="/js/third-party/search/algolia-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"m-mm.me","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.13.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="写在开头的介绍最近发现了一款开源输入法Rime|中州韵输入法,是一个跨平台的输入法算法框架，基于这一框架，Rime开发者与其他开源社区的参与者在Windows、Mac OS、Linux、Android等平台上创造了不同的输入法前端实现，Windows版本叫小狼毫（Weasel），Mac OS版本叫鼠须管（Squirrel），Linux版本叫ibus-rime，Android版本叫同文（Tongw">
+<meta property="og:type" content="website">
+<meta property="og:title" content="开源Rime输入法[鼠须管]的傻瓜式配置之路">
+<meta property="og:url" content="http://m-mm.me/2022/09/12/%E5%BC%80%E6%BA%90Rime%E8%BE%93%E5%85%A5%E6%B3%95-%E9%BC%A0%E9%A1%BB%E7%AE%A1-%E7%9A%84%E5%82%BB%E7%93%9C%E5%BC%8F%E9%85%8D%E7%BD%AE%E4%B9%8B%E8%B7%AF/index.html">
+<meta property="og:site_name" content="折腾派">
+<meta property="og:description" content="写在开头的介绍最近发现了一款开源输入法Rime|中州韵输入法,是一个跨平台的输入法算法框架，基于这一框架，Rime开发者与其他开源社区的参与者在Windows、Mac OS、Linux、Android等平台上创造了不同的输入法前端实现，Windows版本叫小狼毫（Weasel），Mac OS版本叫鼠须管（Squirrel），Linux版本叫ibus-rime，Android版本叫同文（Tongw">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/imum-me/img@main/uPic/WX20220913-111109.png">
+<meta property="og:image" content="https://camo.githubusercontent.com/27e9bbddbcd2b7e46dd8a680812f46886ee6c5ae70c7f6c186c5b410223ba80f/68747470733a2f2f692e696d6775722e636f6d2f6d4d4d365466742e706e67">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/imum-me/img@main/uPic/WX20220913-112926.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/imum-me/img@main/uPic/WX20220913-163307.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/imum-me/img@main/uPic/WX20220913-164341.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/imum-me/img@main/uPic/WX20220913-170127.png">
+<meta property="article:published_time" content="2022-09-12T00:34:36.000Z">
+<meta property="article:modified_time" content="2022-09-13T09:02:26.757Z">
+<meta property="article:author" content="Zhao">
+<meta property="article:tag" content="Mac OS">
+<meta property="article:tag" content="鼠须管">
+<meta property="article:tag" content="Rime">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/imum-me/img@main/uPic/WX20220913-111109.png">
+
+
+<link rel="canonical" href="http://m-mm.me/2022/09/12/%E5%BC%80%E6%BA%90Rime%E8%BE%93%E5%85%A5%E6%B3%95-%E9%BC%A0%E9%A1%BB%E7%AE%A1-%E7%9A%84%E5%82%BB%E7%93%9C%E5%BC%8F%E9%85%8D%E7%BD%AE%E4%B9%8B%E8%B7%AF/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://m-mm.me/2022/09/12/%E5%BC%80%E6%BA%90Rime%E8%BE%93%E5%85%A5%E6%B3%95-%E9%BC%A0%E9%A1%BB%E7%AE%A1-%E7%9A%84%E5%82%BB%E7%93%9C%E5%BC%8F%E9%85%8D%E7%BD%AE%E4%B9%8B%E8%B7%AF/","path":"2022/09/12/开源Rime输入法-鼠须管-的傻瓜式配置之路/","title":"开源Rime输入法[鼠须管]的傻瓜式配置之路"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>开源Rime输入法[鼠须管]的傻瓜式配置之路 | 折腾派</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">折腾派</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">生命不惜,折腾不止</p>
+      <img class="custom-logo-image" src="https://cdn.jsdelivr.net/gh/imum-me/img@main/uPic/xiaokonglongtouxiang.png" alt="折腾派">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-胡言乱语"><a href="/bb/" rel="section"><i class="fa fa-comments fa-fw"></i>胡言乱语</a></li><li class="menu-item menu-item-schedule"><a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a></li><li class="menu-item menu-item-travelling"><a href="https://travellings.link/" rel="noopener" target="_blank"><i class="fa fa-subway fa-fw"></i>Travelling</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container"></div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container">
+  <div class="algolia-stats"><hr></div>
+  <div class="algolia-hits"></div>
+  <div class="algolia-pagination"></div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%99%E5%9C%A8%E5%BC%80%E5%A4%B4%E7%9A%84%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">写在开头的介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%B9%E7%82%B9"><span class="nav-number">2.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">3.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE"><span class="nav-number">4.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E%EF%BC%88%E9%BC%A0%E9%A1%BB%E7%AE%A1%E9%85%8D%E7%BD%AE%E7%A8%8D%E8%AF%A6%E8%A7%A3%EF%BC%89"><span class="nav-number">5.</span> <span class="nav-text">写在最后（鼠须管配置稍详解）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%A8%E5%B1%80%E8%AE%BE%E7%BD%AE"><span class="nav-number">5.1.</span> <span class="nav-text">全局设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%8D%E5%BA%93%E6%A0%BC%E5%BC%8F"><span class="nav-number">5.2.</span> <span class="nav-text">词库格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%8D%E5%BA%93%E5%A4%96%E6%8C%82"><span class="nav-number">5.3.</span> <span class="nav-text">词库外挂</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%8D%E5%BA%93%E8%BD%BD%E5%85%A5%E5%8F%8A%E6%A8%A1%E5%BC%8F%E8%BD%AC%E6%8D%A2"><span class="nav-number">5.4.</span> <span class="nav-text">词库载入及模式转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%8D%E5%BA%93%E8%BD%AC%E6%8D%A2"><span class="nav-number">5.5.</span> <span class="nav-text">词库转换</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Zhao"
+      src="https://cdn.jsdelivr.net/gh/tosspi/img@main/img/zhaoico2.png">
+  <p class="site-author-name" itemprop="name">Zhao</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="mailto:i@imum.me" title="E-Mail → mailto:i@imum.me" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/zhaomumu520" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;zhaomumu520" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/imum_me" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;imum_me" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://imum.me/" title="你是人间的四月天 → https:&#x2F;&#x2F;imum.me" rel="noopener" target="_blank"><i class="fa fa-globe fa-fw"></i>你是人间的四月天</a>
+      </span>
+  </div>
+
+
+<div class="cc-license animated" itemprop="sponsor">
+  <a href="https://travellings.link" class="cc-opacity" title="开往-友链接力" target="_blank"><img width="80" src="https://travellings.link/assets/logo.svg" alt="Travelling"></a>
+</div><div class="cc-license animated" itemprop="sponsor">
+  <a href="https://www.foreverblog.cn/go.html" class="cc-opacity" title="穿梭虫洞-随机访问十年之约友链博客" target="_blank"><img width="80" src="https://img.foreverblog.cn/wormhole_2.gif" alt="Foreverblog"></a>
+</div>  
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://m-mm.me/2022/09/12/%E5%BC%80%E6%BA%90Rime%E8%BE%93%E5%85%A5%E6%B3%95-%E9%BC%A0%E9%A1%BB%E7%AE%A1-%E7%9A%84%E5%82%BB%E7%93%9C%E5%BC%8F%E9%85%8D%E7%BD%AE%E4%B9%8B%E8%B7%AF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/tosspi/img@main/img/zhaoico2.png">
+      <meta itemprop="name" content="Zhao">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="折腾派">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="开源Rime输入法[鼠须管]的傻瓜式配置之路 | 折腾派">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          开源Rime输入法[鼠须管]的傻瓜式配置之路
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-09-12 08:34:36" itemprop="dateCreated datePublished" datetime="2022-09-12T08:34:36+08:00">2022-09-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-09-13 17:02:26" itemprop="dateModified" datetime="2022-09-13T17:02:26+08:00">2022-09-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Rime%E8%BE%93%E5%85%A5%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">Rime输入法</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><img src="https://cdn.jsdelivr.net/gh/imum-me/img@main/uPic/WX20220913-111109.png" alt="WX20220913-111109"></p>
+<h2 id="写在开头的介绍"><a href="#写在开头的介绍" class="headerlink" title="写在开头的介绍"></a>写在开头的介绍</h2><p>最近发现了一款开源输入法<a target="_blank" rel="noopener" href="https://rime.im/">Rime|中州韵输入法</a>,是一个跨平台的输入法算法框架，基于这一框架，Rime开发者与其他开源社区的参与者在Windows、Mac OS、Linux、Android等平台上创造了不同的输入法前端实现，Windows版本叫小狼毫（Weasel），Mac OS版本叫鼠须管（Squirrel），Linux版本叫ibus-rime，Android版本叫同文（Tongwen Rime Input Method Editor）。<br>Rime|中州韵输入法不同于我们以往使用的百度、搜狗、讯飞等输入法，它的配置上有一定的门槛，再就是它是开源的，不用担心会联网泄漏隐私等。<br>网上有许多配置方案，我们完全可以拿来使用，比如我现在使用的这个–<a target="_blank" rel="noopener" href="https://github.com/ssnhd/rime">Rime Squirrel 鼠须管配置文件（朙月拼音、小鹤双拼、自然码双拼）</a>。</p>
+<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><blockquote>
+<ul>
+<li>朙月拼音（默认）、小鹤双拼、自然码双拼</li>
+<li>词库不丢失，支持多平台同步</li>
+<li>百万词库（城市信息、自然科学、社会科学、工程应用、农林渔畜、医药医学、电子游戏、艺术设计、生活百科、运动休闲、人文科学、娱乐休闲）</li>
+<li>Emoji</li>
+<li>动态输入时间、日期、星期</li>
+<li>速度快、开源、保护隐私、自定义强<br><img src="https://camo.githubusercontent.com/27e9bbddbcd2b7e46dd8a680812f46886ee6c5ae70c7f6c186c5b410223ba80f/68747470733a2f2f692e696d6775722e636f6d2f6d4d4d365466742e706e67" alt="图片"></li>
+</ul>
+</blockquote>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>下载<a target="_blank" rel="noopener" href="https://rime.im/download/">鼠须管</a>(因为我的是Macbook 所以我下载的是鼠须管，当然本文介绍的配置也是鼠须管的，小狼毫等没有设备没有研究。)安装后选择鼠须管输入法，默认的是繁体输入，通过快捷键<strong>control + ~</strong> 切换输入方式，例如选择【朙月拼音·简化字】简体输出。</p>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>1、下载<a target="_blank" rel="noopener" href="https://github.com/ssnhd/rime/archive/refs/heads/master.zip">配置文件</a>,解压后得道两个文件夹【配置文件】和【花园明朝字体】，将字体安装到字体册（Mac OS缺少的生僻字）。<br>2、点击菜单栏ㄓ】-【用户设定】，将【配置文件】里所有文件粘贴进去，并选择覆盖。<br>3、点击菜单栏【ㄓ】-【重新部署】（快捷键 Control+Option+｀），至此完成定制配置，可以愉快的使用了，剩下的就是慢慢的养词库了。<br><img src="https://cdn.jsdelivr.net/gh/imum-me/img@main/uPic/WX20220913-112926.png" alt="WX20220913-112926"></p>
+<h2 id="写在最后（鼠须管配置稍详解）"><a href="#写在最后（鼠须管配置稍详解）" class="headerlink" title="写在最后（鼠须管配置稍详解）"></a>写在最后（鼠须管配置稍详解）</h2><h3 id="全局设置"><a href="#全局设置" class="headerlink" title="全局设置"></a>全局设置</h3><p>全局设置文件 <em><strong>default.custom.yaml</strong></em> ，包含输入方案、候选词个数、中英文切换、快捷键。<br>以下为我的配置文件内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">patch:</span><br><span class="line">  schema_list:</span><br><span class="line">    - schema: luna_pinyin_simp # 朙月拼音</span><br><span class="line">    - schema: double_pinyin_flypy # 小鹤双拼</span><br><span class="line">    - schema: double_pinyin # 自然码双拼</span><br><span class="line">    - schema: numbers # 大写数字</span><br><span class="line"></span><br><span class="line">  menu/page_size: 9 # 候选词个数</span><br><span class="line"></span><br><span class="line">  # 若 caps 切换大小写无效, 打开 Mac 系统偏好设置 &gt; 键盘 &gt; 输入法 &gt; 取消勾选[使用大写锁定键切换“美国”输入模式]</span><br><span class="line">  ascii_composer/good_old_caps_lock: true # 若为 true， Caps 只切换大小写</span><br><span class="line">  ascii_composer/switch_key:</span><br><span class="line">    Caps_Lock: commit_code # Caps 键</span><br><span class="line">    Shift_L: commit_code # 左 Shift，切换中英文</span><br><span class="line">    Shift_R: commit_code # 右 Shift，切换中英文</span><br><span class="line">    Control_L: noop # 左 Control，屏蔽该切换键</span><br><span class="line">    Control_R: noop # 右 Control，屏蔽该切换键</span><br><span class="line"></span><br><span class="line">  key_binder/bindings: # 若开启, 去掉前面#</span><br><span class="line">    # 翻页</span><br><span class="line">    #- &#123; when: has_menu, accept: Tab, send: Page_Down &#125;            # &quot;tab&quot; 键翻页, 和 &quot;tab&quot; 键分词只能二选一</span><br><span class="line">    - &#123; when: composing, accept: Tab, send: Shift+Right &#125; # &quot;tab&quot; 键分词</span><br><span class="line">    - &#123; when: paging, accept: minus, send: Page_Up &#125; # &quot;-&quot; 上一页</span><br><span class="line">    - &#123; when: has_menu, accept: equal, send: Page_Down &#125; # &quot;=&quot; 下一页</span><br><span class="line">    - &#123; when: paging, accept: comma, send: Page_Up &#125; # &quot;,&quot; 上一页</span><br><span class="line">    - &#123; when: has_menu, accept: period, send: Page_Down &#125; # &quot;.&quot; 下一页</span><br><span class="line">    - &#123; when: paging, accept: bracketleft, send: Page_Up &#125; # &quot;[&quot; 上一页</span><br><span class="line">    - &#123; when: has_menu, accept: bracketright, send: Page_Down &#125; # &quot;]&quot; 下一页</span><br><span class="line">    # 快捷键</span><br><span class="line">    #- &#123; when: has_menu, accept: semicolon, send: 2 &#125;              # &quot;:&quot; (分号)选择第 2 个候选词</span><br><span class="line">    #- &#123; when: has_menu, accept: apostrophe, send: 3 &#125;             # &quot;&#x27;&quot; (引号)选择第 3 个候选词</span><br><span class="line">    #- &#123; when: composing, accept: Shift+Tab, send: Shift+Left &#125;    # &quot;Shift+Tab&quot; 键向左选拼音分词</span><br><span class="line">    #- &#123; when: composing, accept: Control+a, send: Home &#125;          # &quot;Control+a&quot; 光标移至首</span><br><span class="line">    #- &#123; when: composing, accept: Control+e, send: End &#125;           # &quot;Control+e&quot; 光标移至尾</span><br><span class="line">    #- &#123; when: composing, accept: Control+g, send: Escape &#125;        # &quot;Control+g&quot; 清码</span><br><span class="line">    #- &#123; when: composing, accept: Return, send: Escape &#125;           # &quot;Return&quot; 回车清码</span><br><span class="line">    #- &#123; when: always, accept: Control+Shift+1, select: .next &#125;             # 切换输入方案</span><br><span class="line">    #- &#123; when: always, accept: Control+Shift+2, toggle: ascii_mode &#125;        # 中/英文切换</span><br><span class="line">    #- &#123; when: always, accept: Control+Shift+3, toggle: full_shape &#125;        # 全角/半角切换</span><br><span class="line">    - &#123; when: always, accept: Control+Shift+4, toggle: simplification &#125; # 繁简体切换</span><br><span class="line">    #- &#123; when: always, accept: Control+Shift+5, toggle: extended_charset &#125;  # 通用/增广切换（显示生僻字）</span><br><span class="line">    #- &#123; when: composing, accept: Control+b, send: Left &#125;           # &quot;Control+b&quot; 移动光标</span><br><span class="line">    #- &#123; when: composing, accept: Control+f, send: Right &#125;          # &quot;Control+f&quot; 向右选择候选词</span><br><span class="line">    #- &#123; when: composing, accept: Control+h, send: BackSpace &#125;      # &quot;Control+h&quot; 删除输入码</span><br></pre></td></tr></table></figure>
+<h3 id="词库格式"><a href="#词库格式" class="headerlink" title="词库格式"></a>词库格式</h3><p>新建文件命名格式为 <em><strong>&lt;词库名&gt;.dict.yaml</strong></em><br>比如导入百度下载的词库 <em><strong>luna_pinyin.baidu.dict.yaml</strong></em><br><img src="https://cdn.jsdelivr.net/gh/imum-me/img@main/uPic/WX20220913-163307.png" alt="WX20220913-163307"></p>
+<h3 id="词库外挂"><a href="#词库外挂" class="headerlink" title="词库外挂"></a>词库外挂</h3><p>打开 <em><strong>luna_pinyin.extended.dict.yaml</strong></em> ，将词库名添加。<br>如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"># Rime dictionary</span><br><span class="line"># encoding: utf-8</span><br><span class="line"># Luna Pinyin Extended Dictionary(Basic)  - 明月拼音扩充词库（基本）</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line">name: luna_pinyin.extended      # 词库名</span><br><span class="line">version: &quot;2021.02.07&quot;</span><br><span class="line">sort: by_weight                 # by_weight（按词频高低排序）或 original（保持原码表中的顺序）</span><br><span class="line">use_preset_vocabulary: true     # true 或 false，选择是否导入预设词汇表【八股文】</span><br><span class="line"></span><br><span class="line">import_tables:</span><br><span class="line">  - luna_pinyin</span><br><span class="line">  - luna_pinyin.sogou</span><br><span class="line">  - luna_pinyin.baidubeifen</span><br><span class="line">  - luna_pinyin.huagong</span><br><span class="line">  - luna_pinyin.shuili</span><br><span class="line">  - luna_pinyin.dianshang</span><br><span class="line">  - luna_pinyin.baidu</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="词库载入及模式转换"><a href="#词库载入及模式转换" class="headerlink" title="词库载入及模式转换"></a>词库载入及模式转换</h3><p>打开 <em><strong>luna_pinyin_simp.custom.yaml</strong></em><br>switches 列了：中文西文、全角半角、Emoji、简繁体、字节编码。<br>载入中英文词库，还可以修改英文候选词位置、Emoji 显示注释等。<br>以下为我的配置：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br></pre></td><td class="code"><pre><span class="line">patch:</span><br><span class="line">  switches:</span><br><span class="line">    - name: ascii_mode # 0 中文，1 英文</span><br><span class="line">      reset: 0</span><br><span class="line">      states: [&quot;中文&quot;, &quot;西文&quot;]</span><br><span class="line">    - name: full_shape # 全角/半角符号开关</span><br><span class="line">      states: [&quot;半角&quot;, &quot;全角&quot;]</span><br><span class="line">    - name: show_emoji # Emoji 开关</span><br><span class="line">      reset: 1</span><br><span class="line">      states: [&quot;🈚️️\uFE0E&quot;, &quot;🈶️️\uFE0F&quot;]</span><br><span class="line">    - name: zh_simp # (※1) 繁简转换</span><br><span class="line">      reset: 1</span><br><span class="line">      states: [&quot;漢字&quot;, &quot;汉字&quot;]</span><br><span class="line">    - options: [&quot;utf8&quot;, &quot;gbk&quot;, &quot;gb2312&quot;] # (※2)字符集选单</span><br><span class="line">      reset: 0 # 默认 UTF8</span><br><span class="line">      states:</span><br><span class="line">        - UTF-8</span><br><span class="line">        - GBK</span><br><span class="line">        - GB2312</span><br><span class="line"></span><br><span class="line">  simplifier:</span><br><span class="line">    option_name: zh_simp</span><br><span class="line"></span><br><span class="line">  # 启用罕见字過濾</span><br><span class="line">  engine/filters:</span><br><span class="line">    - simplifier</span><br><span class="line">    - simplifier@emoji_conversion</span><br><span class="line">    - uniquifier</span><br><span class="line">    - charset_filter@gbk # (※3) GBK 过滤</span><br><span class="line">    - single_char_filter</span><br><span class="line"></span><br><span class="line">  emoji_conversion:</span><br><span class="line">    opencc_config: emoji.json</span><br><span class="line">    option_name: show_emoji</span><br><span class="line">    tags: abc</span><br><span class="line">    #tips: all    # Emoji 显示注释</span><br><span class="line"></span><br><span class="line">  # 改写拼写运算，含英文的词汇（luna_pinyin.cn_en.dict.yaml）不影响简拼</span><br><span class="line">  &quot;speller/algebra/@before 0&quot;: xform/^([b-df-hj-np-tv-z])$/$1_/</span><br><span class="line"></span><br><span class="line">  # 载入朙月拼音扩充词库</span><br><span class="line">  &quot;translator/dictionary&quot;: luna_pinyin.extended</span><br><span class="line"></span><br><span class="line">  # 加载easy_en依赖</span><br><span class="line">  &quot;schema/dependencies/@1&quot;: easy_en</span><br><span class="line">  # 载入翻译英文的码表翻译器，取名为 english</span><br><span class="line">  &quot;engine/translators/@4&quot;: table_translator@english</span><br><span class="line">  # english翻译器的设定项</span><br><span class="line">  english:</span><br><span class="line">    dictionary: easy_en</span><br><span class="line">    spelling_hints: 9</span><br><span class="line">    enable_completion: false # 是否启用英文输入联想补全</span><br><span class="line">    enable_sentence: false # 混输时不出现带有图案的英文</span><br><span class="line">    initial_quality: -0.5 # 英文候选词的位置, 数值越大越靠前。</span><br><span class="line"></span><br><span class="line">  # 快捷表情和符号</span><br><span class="line">  punctuator:</span><br><span class="line">    import_preset: symbols</span><br><span class="line">    symbols:</span><br><span class="line">      &quot;/fs&quot;: [½, ‰, ¼, ⅓, ⅔, ¾, ⅒]</span><br><span class="line">      &quot;/xh&quot;: [＊, ×, ✱, ★, ☆, ✩, ✧, ❋, ❊, ❉, ❈, ❅, ✿, ✲]</span><br><span class="line">      &quot;/dq&quot;: [🌍, 🌎, 🌏, 🌐, 🌑, 🌒, 🌓, 🌔, 🌕, 🌖, 🌗, 🌘]</span><br><span class="line">      &quot;/sg&quot;: [🍇, 🍉, 🍌, 🍍, 🍎, 🍏, 🍑, 🍒, 🍓, 🍗, 🍦, 🎂, 🍺, 🍻]</span><br><span class="line">      &quot;/dw&quot;: [🙈, 🐵, 🐈, 🐷, 🐨, 🐼, 🐾, 🐔, 🐬, 🐠, 🦋]</span><br><span class="line">      &quot;/bq&quot;: [😀, 😁, 😂, 😃, 😄, 😅, 😆, 😉, 😊, 😋, 😎, 😍, 😘, 😗]</span><br><span class="line">      &quot;/ss&quot;: [💪, 👈, 👉, 👆, 👇, ✋, 👌, 👍, 👎, ✊, 👊, 👋, 👏, 👐]</span><br><span class="line">      &quot;/sx&quot;: [＝, ＜, ≤, ＞, ≥, ≈, ~, ℃, °]</span><br><span class="line">    half_shape:</span><br><span class="line">      &quot;#&quot;: &quot;#&quot;</span><br><span class="line">      &quot;*&quot;: &quot;*&quot;</span><br><span class="line">      &quot;`&quot;: &quot;`&quot;</span><br><span class="line">      &quot;~&quot;: &quot;~&quot;</span><br><span class="line">      &quot;@&quot;: &quot;@&quot;</span><br><span class="line">      &quot;=&quot;: &quot;=&quot;</span><br><span class="line">      &#x27;\&#x27;: &quot;、&quot;</span><br><span class="line">      &quot;%&quot;: &quot;%&quot;</span><br><span class="line">      &quot;$&quot;: [&quot;¥&quot;, &quot;$&quot;]</span><br><span class="line">      &quot;|&quot;: [&quot;|&quot;, &quot;｜&quot;, &quot;·&quot;]</span><br><span class="line">      &quot;/&quot;: [&quot;/&quot;, &quot;÷&quot;]</span><br><span class="line">      &quot;&#x27;&quot;: &#123; pair: [&quot;「&quot;, &quot;」&quot;] &#125;</span><br><span class="line">      &quot;[&quot;: &quot;【&quot;</span><br><span class="line">      &quot;]&quot;: &quot;】&quot;</span><br><span class="line">      &quot;&lt;&quot;: &quot;《&quot;</span><br><span class="line">      &quot;&gt;&quot;: &quot;》&quot;</span><br><span class="line"></span><br><span class="line">  recognizer/patterns/punct: &quot;^/([a-z]+|[0-9]0?)$&quot;</span><br><span class="line"></span><br><span class="line">  # 模糊拼音</span><br><span class="line">  &quot;speller/algebra&quot;:</span><br><span class="line">    - erase/^xx$/ # 第一行保留</span><br><span class="line"></span><br><span class="line">    # 模糊音定義</span><br><span class="line">    # 需要哪組就刪去行首的 # 號，單雙向任選</span><br><span class="line">    #- derive/^([zcs])h/$1/             # zh, ch, sh =&gt; z, c, s</span><br><span class="line">    #- derive/^([zcs])([^h])/$1h$2/     # z, c, s =&gt; zh, ch, sh</span><br><span class="line"></span><br><span class="line">    #- derive/^n/l/                     # n =&gt; l</span><br><span class="line">    #- derive/^l/n/                     # l =&gt; n</span><br><span class="line"></span><br><span class="line">    # 這兩組一般是單向的</span><br><span class="line">    #- derive/^r/l/                     # r =&gt; l</span><br><span class="line"></span><br><span class="line">    #- derive/^ren/yin/                 # ren =&gt; yin, reng =&gt; ying</span><br><span class="line">    #- derive/^r/y/                     # r =&gt; y</span><br><span class="line"></span><br><span class="line">    # 下面 hu &lt;=&gt; f 這組寫法複雜一些，分情況討論</span><br><span class="line">    #- derive/^hu$/fu/                  # hu =&gt; fu</span><br><span class="line">    #- derive/^hong$/feng/              # hong =&gt; feng</span><br><span class="line">    #- derive/^hu([in])$/fe$1/          # hui =&gt; fei, hun =&gt; fen</span><br><span class="line">    #- derive/^hu([ao])/f$1/            # hua =&gt; fa, ...</span><br><span class="line"></span><br><span class="line">    #- derive/^fu$/hu/                  # fu =&gt; hu</span><br><span class="line">    #- derive/^feng$/hong/              # feng =&gt; hong</span><br><span class="line">    #- derive/^fe([in])$/hu$1/          # fei =&gt; hui, fen =&gt; hun</span><br><span class="line">    #- derive/^f([ao])/hu$1/            # fa =&gt; hua, ...</span><br><span class="line"></span><br><span class="line">    # 韻母部份</span><br><span class="line">    #- derive/^([bpmf])eng$/$1ong/      # meng = mong, ...</span><br><span class="line">    #- derive/([ei])n$/$1ng/            # en =&gt; eng, in =&gt; ing</span><br><span class="line">    #- derive/([ei])ng$/$1n/            # eng =&gt; en, ing =&gt; in</span><br><span class="line"></span><br><span class="line">    # 樣例足夠了，其他請自己總結……</span><br><span class="line"></span><br><span class="line">    # 反模糊音？</span><br><span class="line">    # 誰說方言沒有普通話精確、有模糊音，就能有反模糊音。</span><br><span class="line">    # 示例爲分尖團的中原官話：</span><br><span class="line">    #- derive/^ji$/zii/   # 在設計者安排下鳩佔鵲巢，尖音i只好雙寫了</span><br><span class="line">    #- derive/^qi$/cii/</span><br><span class="line">    #- derive/^xi$/sii/</span><br><span class="line">    #- derive/^ji/zi/</span><br><span class="line">    #- derive/^qi/ci/</span><br><span class="line">    #- derive/^xi/si/</span><br><span class="line">    #- derive/^ju/zv/</span><br><span class="line">    #- derive/^qu/cv/</span><br><span class="line">    #- derive/^xu/sv/</span><br><span class="line">    # 韻母部份，只能從大面上覆蓋</span><br><span class="line">    #- derive/^([bpm])o$/$1eh/          # bo =&gt; beh, ...</span><br><span class="line">    #- derive/(^|[dtnlgkhzcs]h?)e$/$1eh/  # ge =&gt; geh, se =&gt; sheh, ...</span><br><span class="line">    #- derive/^([gkh])uo$/$1ue/         # guo =&gt; gue, ...</span><br><span class="line">    #- derive/^([gkh])e$/$1uo/          # he =&gt; huo, ...</span><br><span class="line">    #- derive/([uv])e$/$1o/             # jue =&gt; juo, lve =&gt; lvo, ...</span><br><span class="line">    #- derive/^fei$/fi/                 # fei =&gt; fi</span><br><span class="line">    #- derive/^wei$/vi/                 # wei =&gt; vi</span><br><span class="line">    #- derive/^([nl])ei$/$1ui/          # nei =&gt; nui, lei =&gt; lui</span><br><span class="line">    #- derive/^([nlzcs])un$/$1vn/       # lun =&gt; lvn, zun =&gt; zvn, ...</span><br><span class="line">    #- derive/^([nlzcs])ong$/$1iong/    # long =&gt; liong, song =&gt; siong, ...</span><br><span class="line">    # 這個辦法雖從拼寫上做出了區分，然而受詞典制約，候選字仍是混的。</span><br><span class="line">    # 只有真正的方音輸入方案纔能做到！但「反模糊音」這個玩法快速而有效！</span><br><span class="line"></span><br><span class="line">    # 模糊音定義先於簡拼定義，方可令簡拼支持以上模糊音</span><br><span class="line">    - abbrev/^([a-z]).+$/$1/ # 簡拼（首字母）</span><br><span class="line">    - abbrev/^([zcs]h).+$/$1/ # 簡拼（zh, ch, sh）</span><br><span class="line"></span><br><span class="line">    # 以下是一組容錯拼寫，《漢語拼音》方案以前者爲正</span><br><span class="line">    - derive/^([nl])ve$/$1ue/          # nve = nue, lve = lue</span><br><span class="line">    - derive/^([jqxy])u/$1v/           # ju = jv,</span><br><span class="line">    - derive/un$/uen/                  # gun = guen,</span><br><span class="line">    - derive/ui$/uei/                  # gui = guei,</span><br><span class="line">    - derive/iu$/iou/                  # jiu = jiou,</span><br><span class="line"></span><br><span class="line">    # 自動糾正一些常見的按鍵錯誤</span><br><span class="line">    - derive/([aeiou])ng$/$1gn/        # dagn =&gt; dang</span><br><span class="line">    - derive/([dtngkhrzcs])o(u|ng)$/$1o/  # zho =&gt; zhong|zhou</span><br><span class="line">    - derive/ong$/on/                  # zhonguo =&gt; zhong guo</span><br><span class="line">    - derive/ao$/oa/                   # hoa =&gt; hao</span><br><span class="line">    - derive/([iu])a(o|ng?)$/a$1$2/    # tain =&gt; tian</span><br><span class="line"></span><br><span class="line">  # 分尖團後 v =&gt; ü 的改寫條件也要相應地擴充：</span><br><span class="line">  #&#x27;translator/preedit_format&#x27;:</span><br><span class="line">  #  - &quot;xform/([nljqxyzcs])v/$1ü/&quot;</span><br><span class="line"></span><br><span class="line">  # librime-lua 输入动态时间和日期</span><br><span class="line">  &quot;engine/translators/@6&quot;: lua_translator@date_translator</span><br></pre></td></tr></table></figure>
+<h3 id="词库转换"><a href="#词库转换" class="headerlink" title="词库转换"></a>词库转换</h3><p>打开 <a target="_blank" rel="noopener" href="https://pinyin.sogou.com/dict/cate/index/167?rf=dictindex&pos=dict_rcmd">搜狗官网</a> 下载词库，格式为 .scel 文件<br><img src="https://cdn.jsdelivr.net/gh/imum-me/img@main/uPic/WX20220913-164341.png" alt="WX20220913-164341"><br>下载[深蓝词库转换工具]（）（PS.需要使用Windows，为了转换一个词库操碎了心）<br>剩下的转换就很简单了，不放图了，转换的时候没有放图。<br>转换过程中转出项记得选择<strong>Rime中州韵</strong>。<br>转换完成后是 <em><strong>.txt</strong></em> 格式的，需要改为 <em><strong>yaml</strong></em>文件。直接重命名既可，比如我百度输入法备份的词库重命名为 <em><strong>luna_pinyin.baidubeifen.dict.yaml</strong></em><br>记得开头要加上以下代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#  此处可以写一个备注，可以将包含哪些词库写在此处，方便日后查看是否有重复。</span><br><span class="line">    </span><br><span class="line">---</span><br><span class="line">name: luna_pinyin.baidubeifen #词库名称（自定义）</span><br><span class="line">version: &quot;2022.08.29&quot;#日期</span><br><span class="line">sort: by_weight</span><br><span class="line">use_preset_vocabulary: true</span><br><span class="line">...</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ul>
+<li>⚠️注意最后 *** … *** 下面要空一行<br><img src="https://cdn.jsdelivr.net/gh/imum-me/img@main/uPic/WX20220913-170127.png" alt="WX20220913-170127"></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Mac-OS/" rel="tag"><i class="fa fa-tag"></i> Mac OS</a>
+              <a href="/tags/%E9%BC%A0%E9%A1%BB%E7%AE%A1/" rel="tag"><i class="fa fa-tag"></i> 鼠须管</a>
+              <a href="/tags/Rime/" rel="tag"><i class="fa fa-tag"></i> Rime</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/03/23/Notion%E6%94%B9%E4%B8%AD%E6%96%87/" rel="prev" title="Notion设置中文">
+                  <i class="fa fa-chevron-left"></i> Notion设置中文
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2021 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder"><img alt="vercel" src="https://img.shields.io/badge/Powered-Vercel&Hexo-yellowgreen?link=https://vercel.com&link=https://vercel.com&logo=vercel"> <img alt="Website" src="https://img.shields.io/website?label=Toss Pi&logo=Grav&style=flat-square&url=https%3A%2F%2Fm-mm.me?link=https://imum.me&link=https://imum.me"><img alt="Website" src="https://img.shields.io/website?down_message=Off&label=GitHub&logo=GitHub&up_color=orange&up_message=Push&url=https%3A%2F%2Fgithub.com"><img alt="jsDelivr hits (GitHub)" src="https://img.shields.io/jsdelivr/gh/hm/tosspi/img?color=critical&label=Jsdelivr&logo=jsdelivr"><img alt="Website" src="https://img.shields.io/website?down_message=Off&label=Cloudflare&logo=Cloudflare&up_message=CDN&url=https%3A%2F%2Fimum.me"></span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.14.2/dist/algoliasearch-lite.umd.js" integrity="sha256-dImjLPUsG/6p3+i7gVKBiDM8EemJAhQ0VvkRK2pVsQY=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.45.0/dist/instantsearch.production.min.js" integrity="sha256-356MuKn0s/KnBeNjzWGP1048qENU5M4IiAWc7q9GErU=" crossorigin="anonymous"></script><script src="/js/third-party/search/algolia-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
